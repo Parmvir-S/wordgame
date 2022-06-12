@@ -1,0 +1,9 @@
+.questionPanel {
+    text-align: center;
+}
+
+.modalButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
