@@ -1,11 +1,9 @@
-import Navibar  from "./components/Navibar";
-import GameContainer from "./pages/GameContainer";
+import JoinScreen from "./pages/JoinScreen";
 
 function App() {
   return (
     <div className="App">
-      <Navibar/>
-      <GameContainer/>
+        <JoinScreen/>
     </div>
   );
 }

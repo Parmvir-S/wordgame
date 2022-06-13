@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import {
   ListGroup,
   Container,
@@ -12,7 +11,7 @@ import {
 import "../styles/QuestionPanel.css";
 import { useState } from "react";
 import { db } from "../db/firebase";
-import { addDoc, collection, getDocs, doc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
 function QuestionPanel() {
   const [show, setShow] = useState(false);
