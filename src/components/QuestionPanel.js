@@ -9,46 +9,19 @@ import {
   Card,
 } from "react-bootstrap";
 import "../styles/QuestionPanel.css";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { db } from "../db/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
+import socket from "../utils/socketConfig";
 
-function QuestionPanel() {
+function QuestionPanel({ room }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [questions, setQuestions] = useState("");
   const [questionCollection, setQuestionCollection] = useState("");
-  let quesDisplay = document.querySelector(".questionDisplay");
 
-  const displayQuestions = (data) => {
-    let topics = data.split(",");
-    return (
-      <>
-        <ListGroup
-          as="ol"
-          numbered
-          style={{ width: "18rem", marginTop: "25%"}}
-        >
-          {topics.map((topic) => {
-            const div = document.createElement("div");
-            div.innerHTML = `<li>${topic}</li>`;
-            div.style.cssText = "border: 0.1px solid grey; margin-top: 5%; border-radius: 2px";
-            quesDisplay.appendChild(div);
-          })}
-        </ListGroup>
-      </>
-    );
-  };
-
-  const clearQuestionsDisplay = () => {
-    quesDisplay.innerHTML = "";
-  };
-
-  const questionHandler = () => {
-    displayQuestions(questions);
-  };
 
   const topicsCollectionRef = collection(db, "topicsCollection");
   const addQuestionToDB = async () => {
@@ -66,7 +39,6 @@ function QuestionPanel() {
   const getTopics = async () => {
     const data = await getDocs(topicsCollectionRef);
     setTopicsDB(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(topicsDB);
   };
 
   const renderPosts = (post, index) => {
@@ -90,9 +62,10 @@ function QuestionPanel() {
         </Card.Body>
         <Button
           onClick={() => {
-            clearQuestionsDisplay();
-            setQuestions(post.topics);
-            questionHandler();
+            socket.emit("send-questions", {
+              topics: post.topics,
+              room
+            })
           }}
         >
           Select Topics
@@ -101,17 +74,31 @@ function QuestionPanel() {
     );
   };
 
+  useLayoutEffect(() => {
+    socket.on("recieved-topics", (topics) => {
+      setQuestions(topics);
+    })
+  }, [socket])
+
   return (
     <div className="questionPanel">
       <Container>
         <Row>
           <Col>
-            <ol
+            <div
               className="questionDisplay"
-              as="ol"
-              numbered
               style={{ width: "100%", marginTop: "25%" }}
-            ></ol>
+            >
+              {questions.split(",").map((topic) => {
+            return (
+              <div key={`topic` + Math.random(1)} style={{ width: "27%", border: "0.1px solid grey", marginTop: "5%", borderRadius: "2px"}}>
+              <p id="top">{topic}</p>
+              <Form.Control/>
+              </div>
+            )
+          })}
+
+            </div>
           </Col>
         </Row>
         <br /> <br />
@@ -164,9 +151,12 @@ function QuestionPanel() {
           <Button
             variant="primary"
             onClick={() => {
-              clearQuestionsDisplay();
-              questionHandler();
               addQuestionToDB();
+              socket.emit("send-questions", {
+                topics: questions,
+                room
+              })
+              handleClose()
             }}
           >
             Add Topics

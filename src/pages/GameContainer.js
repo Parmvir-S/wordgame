@@ -3,21 +3,22 @@ import { Container, Row, Col } from "react-bootstrap";
 import LetterPanel from '../components/LetterPanel';
 import QuestionPanel from '../components/QuestionPanel';
 import TimerPanel from '../components/TimerPanel';
+import "../styles/GameContainer.css";
 
 function GameContainer({name, room}) {
   return (
     <div>
-        <h3 style={{textAlign: "center"}}>{name} is in the {room} room</h3>
+        <h3 style={{textAlign: "center", marginBottom: "-5% "}}>{name} is in the {room} room</h3>
         <Container>
-            <Row>
-                <Col>
-                    <LetterPanel/>
+            <Row className="rowstyle">
+                <Col sm={6} md={4}>
+                    <LetterPanel room={room}/>
                 </Col>
-                <Col>
-                    <QuestionPanel/>
+                <Col sm={6} md={4}>
+                    <QuestionPanel room={room}/>
                 </Col>
-                <Col>
-                    <TimerPanel/>
+                <Col sm={6} md={4}>
+                    <TimerPanel room={room}/>
                 </Col>
             </Row>
         </Container>

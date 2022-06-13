@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { Card, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { useState } from "react";
 import "../styles/TimerPanel.css";
+import socket from '../utils/socketConfig';
 
-function TimerPanel() {
+function TimerPanel({ room }) {
   const [ time, setTime ] = useState(60);
   const [isActive, setIsActive] = useState(false);
 
@@ -16,11 +17,11 @@ function TimerPanel() {
         if (isActive) {
           interval = setInterval(() => {  
               setTime(time => time - 1);
-              if (time === 0) {
+              if (time === 1) {
                   toggle();
               }
           }, 1000);
-        } else if (!isActive && time === -1) {
+        } else if (!isActive && time === 0) {
           clearInterval(interval);
           alert("Game Over");
         }
@@ -28,9 +29,20 @@ function TimerPanel() {
       }, [isActive, time])
 
   const timerFunc = (timeArg) => {
+    socket.emit("send-time", {
+      room,
+      timeArg
+    })
     setTime(timeArg)
     toggle();
   }
+
+  useEffect(() => {
+    socket.on("recieved-time", (time) => {
+      setTime(time)
+      toggle();
+    })
+  }, [socket])
 
   return (
     <div className='timerPanel'>

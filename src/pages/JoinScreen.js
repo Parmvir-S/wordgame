@@ -13,6 +13,11 @@ function JoinScreen() {
     //have user join room here - socket.emit("join-room", roomName or data with name)
     //when person chooses letter everyone in room gets that letter displayed
     //when person starts timer - it starts for everyone in the same room
+    const data = {
+      name,
+      room
+    }
+    socket.emit("join-room", data);
     setShow(true);
   }
   return (
