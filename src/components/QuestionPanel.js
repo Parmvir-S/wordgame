@@ -88,12 +88,12 @@ function QuestionPanel({ room }) {
           <Col>
             <div
               className="questionDisplay"
-              style={{ width: "100%", marginTop: "25%" }}
+              style={{ width: "100%", marginTop: "12%" }}
             >
               {questions.split(",").map((topic) => {
             return (
-              <div key={`topic` + Math.random(1)} style={{ width: "27%", border: "0.1px solid grey", marginTop: "5%", borderRadius: "2px"}}>
-              <p id="top">{topic}</p>
+              <div className="inputStyle" key={`topic` + Math.random(1)} style={{ border: "0.1px solid grey", borderRadius: "2px"}}>
+              <Form.Label id="topicLabel">{topic}</Form.Label>
               <Form.Control/>
               </div>
             )

@@ -31,12 +31,10 @@ function GameContainer({name, room}) {
             <Row className="rowstyle">
                 <Col sm={6} md={4}>
                     <LetterPanel room={room}/>
-                </Col>
-                <Col sm={6} md={4}>
-                    <QuestionPanel room={room}/>
-                </Col>
-                <Col sm={6} md={4}>
                     <TimerPanel room={room}/>
+                </Col>
+                <Col sm={6} md={8}>
+                    <QuestionPanel room={room}/>
                 </Col>
             </Row>
         </Container>

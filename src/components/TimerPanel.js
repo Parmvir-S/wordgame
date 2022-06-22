@@ -46,7 +46,7 @@ function TimerPanel({ room }) {
 
   return (
     <div className='timerPanel'>
-        <Card style={{ width: '100%', marginTop: "25%" }}>
+        <Card style={{ width: '100%', marginTop: "5%" }}>
             <Card.Title style={{ fontSize: "10em"}}>{time}</Card.Title>
             <Card.Body>
                 <Card.Text>

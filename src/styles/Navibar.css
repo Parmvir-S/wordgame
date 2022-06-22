@@ -5,3 +5,9 @@
     align-items: center;
 }
 
+
+@media (max-width: 768px){
+    #logoCont {
+        display: none;
+    }
+}
