@@ -13,6 +13,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { db } from "../db/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import socket from "../utils/socketConfig";
+import {categories, randomCategories} from "../assets/categories/categories";
 
 function QuestionPanel({ room }) {
   const [show, setShow] = useState(false);
@@ -120,6 +121,16 @@ function QuestionPanel({ room }) {
               Get Topics
             </Button>
           </Col>
+          <Col>
+            <Button id="modalButton" variant="info" onClick={() => {
+              socket.emit("send-questions", {
+                topics: randomCategories(categories),
+                room
+              })
+            }}>
+              Random
+            </Button>
+          </Col>
         </Row>
       </Container>
 
@@ -156,6 +167,8 @@ function QuestionPanel({ room }) {
                 topics: questions,
                 room
               })
+              // setQuestions("");
+              // setQuestionCollection("");
               handleClose()
             }}
           >

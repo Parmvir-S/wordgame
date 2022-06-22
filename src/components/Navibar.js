@@ -1,8 +1,12 @@
-import React from 'react'
-import { Navbar, Container } from "react-bootstrap";
+import React, {useState} from 'react'
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import LOGO from "../assets/images/logo.png";
+import "../styles/Navibar.css";
 
 function Navibar() {
+
+  const [score, setScore] = useState(0);
+
   return (
     <div>
         <Navbar bg="dark" variant="dark">
@@ -17,6 +21,11 @@ function Navibar() {
                     />{' '}
                 Word Game
                 </Navbar.Brand>
+                <div className='score'>
+                  <Button  variant="info" onClick={() => setScore(score + 1)}>+</Button>
+                  <p style={{color: "white", marginTop: "1em"}}>{score}</p>
+                  <Button  variant="info" onClick={() => setScore(score - 1)}>-</Button>
+                </div>
             </Container>
         </Navbar>
     </div>
