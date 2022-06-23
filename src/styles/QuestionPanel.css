@@ -18,18 +18,13 @@
 }
 
 #top {
-
     overflow-wrap: break-word;
-
 }
 
 #modalButton {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     margin-top: -20%;
 }
 
 #topicLabel {
-    padding: 2%
+    width: 75%;
 }

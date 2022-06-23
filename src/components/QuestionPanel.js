@@ -14,6 +14,7 @@ import { db } from "../db/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import socket from "../utils/socketConfig";
 import {categories, randomCategories} from "../assets/categories/categories";
+import { motion } from "framer-motion";
 
 function QuestionPanel({ room }) {
   const [show, setShow] = useState(false);
@@ -92,7 +93,10 @@ function QuestionPanel({ room }) {
             >
               {questions.split(",").map((topic) => {
             return (
-              <div className="inputStyle" key={`topic` + Math.random(1)} style={{ border: "0.1px solid grey", borderRadius: "2px"}}>
+              <div 
+                className="inputStyle" key={`topic` + Math.random(1)} 
+                style={{ border: "0.1px solid grey", borderRadius: "2px"}}
+              >
               <Form.Label id="topicLabel">{topic}</Form.Label>
               <Form.Control/>
               </div>
@@ -128,7 +132,7 @@ function QuestionPanel({ room }) {
                 room
               })
             }}>
-              Random
+              Random Topics
             </Button>
           </Col>
         </Row>
@@ -167,8 +171,6 @@ function QuestionPanel({ room }) {
                 topics: questions,
                 room
               })
-              // setQuestions("");
-              // setQuestionCollection("");
               handleClose()
             }}
           >
