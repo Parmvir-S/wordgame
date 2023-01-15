@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Word Game
+<p align="center">
+  <img  src="https://parm-portfolio.vercel.app/static/media/WG.8bb484f1b6bd5b2f349c808ef53d3005.svg" />
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Word Game is a web-based multiplayer game that utilizes websockets to allow users to connect to the same room and play an interactive word game together. The game features a room creation system, where one player can create a room and share the room name with other players. The game also includes a game master system, where one player can start the game by selecting a random letter and starting the timer. Players must come up with words related to the given topics and starting with the specified letter. At the end of the game, players' scores are calculated based on the uniqueness of their chosen words. Word Game was developed using Node.js and Socket.io to enable real-time communication between players. The motivation behind this project was to create an online version of the popular family game Scattegories, using modern web technologies to improve the gameplay experience and reduce paper usage.
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+-   React
+-   Node.js
+-   Express
+-   Firebase
+-   Socket.io
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   Room creation: One player can create a room and share the room name with other players.
+-   Game Master: One player can start the game by selecting a random letter and starting the timer.
+-   Topics: Users can create new topics, get topics from a database of previously made topics, or choose random topics to play with.
+-   Real-time communication: Utilizes websockets to allow users to connect to the same room and play together in real-time.
+-   Score tracking: Players can keep track of their scores using the score incrementer.
+-   Room Users: Users can see who else is currently in the room, and if a person leaves the room their name disappears from that list.
 
-### `npm test`
+## Accomplishments
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As the developer of this application, I am proud to have implemented real-time communication using websockets and socket.io, allowing for a seamless multiplayer experience. Additionally, I was able to effectively utilize React and Firebase to create a responsive and dynamic front-end, while utilizing Node.js and Express to handle back-end logic and database management.
 
-### `npm run build`
+## Future Improvements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Implement a matchmaking system, allowing players to join existing games or create their own games with specific players.
+-   Implement a chat feature, allowing players to communicate in real-time during the game.
+-   Implement a settings feature, allowing players to customize their experience (e.g. time limit).
+-   Add more game modes, such as a two-letter-beginning game mode, a game mode where you have to come up with a word with a certain number of letters, etc.
