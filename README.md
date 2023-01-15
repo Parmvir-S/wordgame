@@ -7,6 +7,8 @@
 
 Word Game is a web-based multiplayer game that utilizes websockets to allow users to connect to the same room and play an interactive word game together. The game features a room creation system, where one player can create a room and share the room name with other players. The game also includes a game master system, where one player can start the game by selecting a random letter and starting the timer. Players must come up with words related to the given topics and starting with the specified letter. At the end of the game, players' scores are calculated based on the uniqueness of their chosen words. Word Game was developed using Node.js and Socket.io to enable real-time communication between players. The motivation behind this project was to create an online version of the popular family game Scattegories, using modern web technologies to improve the gameplay experience and reduce paper usage.
 
+<strong>Live Link:</strong> https://word-game-b00da.web.app/
+
 ## Tech Stack
 
 -   React
